@@ -11,17 +11,17 @@ package person2;
  */
 public class Person2 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        int age = 14;
-        double height = 5.75;
-        String firstName = "Tyler";
-        String lastName = "King";
-        boolean Astudent = true;
-        System.out.println("My name is" + );
+        int age;
+        double height;
+        String firstName;
+        String lastName;
+        boolean Astudent;
+        String phonenumber;
+        
+        public Person2(String newfirstName, String newlastName, String newphonenumber){
+            
+        }
         
     }
     
-}
+
