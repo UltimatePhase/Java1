@@ -2,7 +2,7 @@ package conditionals;
 
 import java.util.Scanner;
 
-public class conditionals {
+public class Conditionals {
 
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class conditionals {
             rightAnswers++;
         }
         else {
-            System.out.println("You must have brain issues to get this problem wrong.");
+            System.out.println("Why u no pick D.");
         }
          System.out.println("Question 3: Am I the best person at java??");
         System.out.println("\tA) no");
@@ -60,9 +60,9 @@ public class conditionals {
             rightAnswers++;
         }
         else {
-            System.out.println("Sorry, the captital is actually Sacramento!");
+            System.out.println("Sorry, it is A!");
         }
-        System.out.println("Your score is " + rightAnswers + " out of 1 question.");
+        System.out.println("Your score is " + rightAnswers + " out of 4 question.");
     }
     
 }
