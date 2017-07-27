@@ -19,7 +19,7 @@ public class Person2 {
         String phonenumber;
         
         public Person2(String newfirstName, String newlastName, String newphonenumber){
-            
+            firstName=newfirstName;
         }
         
     }
