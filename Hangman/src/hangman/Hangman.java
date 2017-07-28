@@ -21,10 +21,16 @@ public class Hangman {
      /**
      * @param args the command line arguments
      */
+    static String word;
+    static Scanner keyboard;
+    static ArrayList<Character> a;
+    static ArrayList<Character> wrong;
+    static ArrayList<Character> correct;
+    static  String[] array1 ;
 
     public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
-        String[] array1 = new String[25];
+        keyboard = new Scanner(System.in);
+        array1 = new String[25];
 
         array1[0] = "rule";
         array1[1] = "onerous";
@@ -51,30 +57,73 @@ public class Hangman {
         array1[22] = "camp";
         array1[23] = "neck";
         array1[24] = "oven";
-        char[] wrong = new char[a];
-        int random = (int) (Math.random() * 24 + 0);
-        String word = array1[random];
-        System.out.println(word);
+        
+        int wrongguesses = 7;
+        wrongguesses = play(wrongguesses);
 
-        ArrayList<Character> a = new ArrayList<Character>();
+        while (true) {
+            if (wrongguesses == 0) {
+                System.out.println("I am sorry, but you are out of tries.");
+
+            } else {
+                System.out.println("Congratulations! You got the word correct!");
+            }
+            System.out.println("Would you like to play again? ");
+            String yn = keyboard.nextLine();
+            if (yn.equals("yes")) {
+
+                wrongguesses = 7;
+                wrongguesses = play(wrongguesses);
+            } else {
+                break;
+            }
+        }
+    }
+
+    public static boolean printWord() {
+        boolean won = true;
+        for (char l : a) {
+            if (correct.contains(l)) {
+                System.out.print(l);
+            } else {
+                System.out.print("-");
+                won = false;
+            }
+        }
+        System.out.println();
+        return won;
+    }
+
+    public static int play(int wrongguesses) {
+        wrong = new ArrayList();
+        correct = new ArrayList();
+        int random = (int) (Math.random() * array1.length);
+        word = array1[random];
+
+        a = new ArrayList<Character>();
         for (char c : word.toCharArray()) {
             a.add(c);
         }
-        int wrongguesses = 0;
-        while (wrongguesses < 10) {
-            System.out.println(word = word.replaceAll(".", "*"));
+        while (wrongguesses > 0) {
+
+            if (printWord()) {
+                return 1;
+            }
             System.out.println("What is your guess?");
             char b = keyboard.nextLine().toCharArray()[0];
             if (a.contains(b)) {
                 System.out.println("You got a letter!");
-                
-            }
-            else {
-                System.out.println("I am sorry, you didn't get a letter.");
+                correct.add(b);
+
+            } else { 
+                wrongguesses--;
+                System.out.println("I am sorry, you didn't get a letter. You have " + wrongguesses + " guesses left.");
                 wrong.add(b);
-                wrongguesses++;
-                
+               
+
             }
+
         }
+        return wrongguesses;
     }
 }
